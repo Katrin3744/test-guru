@@ -12,3 +12,4 @@ test = Test.create(title: "Title_name", level: 1, author_id: user.id, category_i
 t_u=TestUser.create(user_id: user.id, test_id: test.id)
 question = Question.create(question: "question_name", test_id: test.id)
 answer=Answer.create(answer: "Answer_name", question_id: question.id)
+a_u=AnswerUser.create(user_id: user.id, answer_id: answer.id)
