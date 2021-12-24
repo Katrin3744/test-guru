@@ -12,8 +12,8 @@ category = Category.create!(category: "Category_name1")
 test1 = Test.create!(title: "Title_name1", level: 1, author_id: user2.id, category_id: category.id)
 test2 = Test.create!(title: "Title_name2", level: 0, author_id: user2.id, category_id: category.id)
 
-t_u1 = TestUser.create!(user_id: user1.id, test_id: test1.id)
-t_u2 = TestUser.create!(user_id: user1.id, test_id: test2.id)
+t_u1 = TestsUser.create!(user_id: user1.id, test_id: test1.id)
+t_u2 = TestsUser.create!(user_id: user1.id, test_id: test2.id)
 
 questions = Question.create!([{ question: "question_name11", test_id: test1.id }, { question: "question_name12", test_id: test1.id },
                               { question: "question_name13", test_id: test1.id }, { question: "question_name14", test_id: test1.id },
