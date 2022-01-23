@@ -6,28 +6,25 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #
-user1 = User.create!(name: "User_name1")
-user2 = User.create!(name: "User_name2")
-category = Category.create!(category: "Category_name1")
-test1 = Test.create!(title: "Title_name1", level: 1, author_id: user2.id, category_id: category.id)
-test2 = Test.create!(title: "Title_name2", level: 0, author_id: user2.id, category_id: category.id)
 
-t_u1 = TestsUser.create!(user_id: user1.id, test_id: test1.id)
-t_u2 = TestsUser.create!(user_id: user1.id, test_id: test2.id)
-
-questions = Question.create!([{ question: "question_name11", test_id: test1.id }, { question: "question_name12", test_id: test1.id },
-                              { question: "question_name13", test_id: test1.id }, { question: "question_name14", test_id: test1.id },
-                              { question: "question_name21", test_id: test2.id }, { question: "question_name22", test_id: test2.id },
-                              { question: "question_name23", test_id: test2.id }, { question: "question_name24", test_id: test2.id }])
+users = User.create!([{ name: "User_name1" }, { name: "User_name2" }])
+categories = Category.create!([{ title: "Category_name1" }, { title: "Category_name2" }])
+tests = Test.create!([{ title: "Title_name1", level: 1, author: users[1], category: categories[0] },
+                      { title: "Title_name2", level: 0, author: users[1], category: categories[1] }])
+tests_users = TestsUser.create!([{ user: users[0], test: tests[0] },
+                                 { user: users[0], test: tests[1] }])
+questions = Question.create!([{ question: "question_name11", test: tests[0] }, { question: "question_name12", test: tests[0] },
+                              { question: "question_name13", test: tests[0] }, { question: "question_name14", test: tests[0] },
+                              { question: "question_name21", test: tests[1] }, { question: "question_name22", test: tests[1] },
+                              { question: "question_name23", test: tests[1] }, { question: "question_name24", test: tests[1] }])
 answers_query = []
-puts questions
 i = 0
 questions.each do |question|
   j = 0
   while j < 4 do
     answer_name = "Answer_name#{i}#{j}"
     j % 2 == 1 ? answer_correct = true : answer_correct = false
-    answers_query.push({ answer: answer_name, correct: answer_correct, question_id: question.id })
+    answers_query.push({ answer: answer_name, correct: answer_correct, question: questions[i] })
     j += 1
   end
   i += 1
