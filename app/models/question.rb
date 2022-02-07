@@ -4,5 +4,11 @@ class Question < ApplicationRecord
   has_many :answers, dependent: :destroy
 
   validates :body, presence: true
-  validates :answers, length: { maximum: 4 }
+  validate :validate_answers
+
+  private
+
+  def validate_answers
+    errors.add(:answers) if answers.count > 3
+  end
 end

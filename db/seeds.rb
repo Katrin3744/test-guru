@@ -21,7 +21,7 @@ answers_query = []
 i = 0
 questions.each do |question|
   j = 0
-  while j < 4 do
+  while j < 6 do
     answer_name = "Answer_name#{i}#{j}"
     j % 2 == 1 ? answer_correct = true : answer_correct = false
     answers_query.push({ body: answer_name, correct: answer_correct, question: questions[i] })
