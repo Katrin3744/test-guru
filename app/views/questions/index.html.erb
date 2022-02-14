@@ -1,0 +1,20 @@
+<h1>Test:<%=@test.title%></h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>All questions</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @test.questions.each do |question| %>
+    <tr>
+      <td>
+        <%= question.body %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
