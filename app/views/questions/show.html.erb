@@ -1,0 +1,6 @@
+<table>
+  <tbody>
+  <%=@test.questions.find(params[:id]).body%>
+  </tbody>
+</table>
+<%= link_to "Delete", @question, method: :delete %>
