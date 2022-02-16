@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question_new = @test.questions.build({ body: params[:question][:body], test: @test })
+    @question_new = @test.questions.build(question_params)
     if @question_new.save
       redirect_to @question_new
     else
@@ -38,6 +38,10 @@ class QuestionsController < ApplicationController
 
   def find_question
     @question = Question.find(params[:id])
+  end
+
+  def question_params
+    params.require(:question).permit(:body, :test)
   end
 
   def rescue_with_record_not_found
