@@ -1,4 +1,4 @@
-<%= render 'form', source: @question %>
+<%= render 'form', source: [nil, @question] %>
 <p>
-  <%= link_to "Back", test_questions_path(@question.test_id) %>
+  <%= link_to "Back", test_path(@question.test_id) %>
 </p>

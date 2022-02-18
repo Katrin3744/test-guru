@@ -1,9 +1,9 @@
 module QuestionsHelper
-  def question_header(source)
-    if !source.is_a?(Question)
-      "Create New #{source.first.title} Question"
+  def question_header(question:, test:)
+    if question.new_record?
+      "Create New #{test.title} Question"
     else
-      "Edit #{source.test.title} Question"
+      "Edit #{question.test.title} Question"
     end
   end
 end
