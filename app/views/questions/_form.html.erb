@@ -1,6 +1,6 @@
 <%= form_with model: source, local: true do |form| %>
   <h1>
-    <%= question_header(test: source.first, question: source.last) %>
+    <%= question_header(question: @question, test: @test) %>
   </h1>
   <%= render 'shared/errors', resource: @question %>
   <p>
