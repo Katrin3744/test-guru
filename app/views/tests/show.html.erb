@@ -1,0 +1,11 @@
+<p>Title  <%= @test.title %></p>
+<p>Level  <%= @test.level %></p>
+<p>
+  <%= link_to 'New question', new_test_question_path(@test) %>
+</p>
+
+<%= render 'shared/list', resource: @question %>
+<p>
+  <%= link_to "Back", tests_path %>
+</p>
+
