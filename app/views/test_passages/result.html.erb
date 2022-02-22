@@ -1,0 +1,13 @@
+<h1><%= @test_passage.test.title %> was completed</h1>
+<% if @test_result >= 85.0 %>
+  <p style="color:green;">
+    <%= @test_result %>%
+  </p>
+<% else %>
+  <p style="color:red;">
+    <%= @test_result %>%
+  </p>
+<% end %>
+<p>
+  <%= link_to 'All tests', tests_path %>
+</p>
