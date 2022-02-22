@@ -1,8 +1,8 @@
 class TestPassagesController < ApplicationController
   before_action :find_test_passage, only: [:show, :result, :update]
-  before_action :calculate_number_of_questions, only: [:show]
 
   def show
+    calculate_number_of_questions
   end
 
   def result
@@ -28,6 +28,6 @@ class TestPassagesController < ApplicationController
 
   def calculate_number_of_questions
     @number_of_questions = @test_passage.number_of_questions
-    @question_number = @number_of_questions - @test_passage.number_next_questions
+    @question_number = @test_passage.current_question_number
   end
 end
