@@ -1,11 +1,11 @@
 <h1><%= @test_passage.test.title %> was completed</h1>
-<% if @test_result >= 85.0 %>
+<% if @test_passage.successful? %>
   <p style="color:green;">
-    <%= @test_result %>%
+    <%= @test_passage.result_calculation %>%
   </p>
 <% else %>
   <p style="color:red;">
-    <%= @test_result %>%
+    <%= @test_passage.result_calculation %>%
   </p>
 <% end %>
 <p>

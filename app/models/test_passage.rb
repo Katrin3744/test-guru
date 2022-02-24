@@ -9,6 +9,10 @@ class TestPassage < ApplicationRecord
     current_question.nil?
   end
 
+  def successful?
+    result_calculation >= 85
+  end
+
   def accept!(answer_ids)
     if correct_answer?(answer_ids)
       self.correct_questions += 1

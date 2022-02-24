@@ -5,7 +5,6 @@ class TestPassagesController < ApplicationController
   end
 
   def result
-    @test_result = @test_passage.result_calculation
   end
 
   def update
