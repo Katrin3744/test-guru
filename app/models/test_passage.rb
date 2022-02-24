@@ -4,13 +4,14 @@ class TestPassage < ApplicationRecord
   belongs_to :current_question, class_name: 'Question', optional: true
 
   before_validation :before_validation_set_current_question
+  SUCCESS_RATIO = 85.0
 
   def completed?
     current_question.nil?
   end
 
   def successful?
-    result_calculation >= 85
+    result_calculation >= SUCCESS_RATIO
   end
 
   def accept!(answer_ids)
