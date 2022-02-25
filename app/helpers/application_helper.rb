@@ -6,4 +6,13 @@ module ApplicationHelper
   def github_url(author:, repo:, title:)
     link_to title, "https://github.com/#{author}/#{repo}", target: '_blank'
   end
+
+  def flash_message_helper
+    html = ""
+    flash.each do |key, msg|
+      html << (content_tag :p, msg, :id => key, :class => 'flash ' + key)
+    end
+    puts html
+    html
+  end
 end

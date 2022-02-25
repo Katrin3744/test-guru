@@ -11,6 +11,11 @@
 </head>
 
 <body>
+<% if logged_in? %>
+  <%= render "layouts/navbar_for_logged_in" %>
+<% else %>
+  <%= render "layouts/navbar_for_not_logged_in" %>
+<% end %>
 <%= yield %>
 <%= render "layouts/footer" %>
 </body>
