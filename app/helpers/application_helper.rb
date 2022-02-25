@@ -12,7 +12,6 @@ module ApplicationHelper
     flash.each do |key, msg|
       html << (content_tag :p, msg, :id => key, :class => 'flash ' + key)
     end
-    puts html
     html
   end
 end
