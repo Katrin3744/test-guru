@@ -1,14 +1,13 @@
+<h1>All tests</h1>
+<p>
+  <%= link_to 'New test', new_admin_test_path %>
+</p>
+
 <table>
   <tr>
-    <% if resource.first.is_a?(Test) %>
       <th>Title</th>
       <th>Level</th>
       <th>Questions number</th>
-    <% else %>
-      <th>Body</th>
       <th colspan="3">Actions</th>
-    <% end %>
-  </tr>
-
-  <%= render resource %>
+  <%= render 'test' %>
 </table>
