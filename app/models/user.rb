@@ -3,7 +3,9 @@ class User < ApplicationRecord
   has_many :performed_tests, through: :test_passages, source: :test
   has_many :written_tests, foreign_key: "author_id", class_name: "Test", dependent: :destroy
 
-  validates :email, presence: true
+  validates :email, presence: true, format: URI::MailTo::EMAIL_REGEXP
+
+  has_secure_password
 
   def tests_with_level(level)
     performed_tests.where(level: level)
