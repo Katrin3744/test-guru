@@ -12,6 +12,6 @@ module ApplicationHelper
     flash.each do |key, msg|
       html << (content_tag :p, msg, :id => key, :class => 'flash ' + key)
     end
-    html
+    html.html_safe
   end
 end
