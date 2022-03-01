@@ -1,5 +1,4 @@
 class Admin::AnswersController < Admin::BaseController
-
   before_action :find_question, only: [:new, :create]
   before_action :find_answer, only: [:show, :update, :edit, :destroy]
 
