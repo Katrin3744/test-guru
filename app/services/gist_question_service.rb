@@ -7,6 +7,7 @@ class GistQuestionService
 
   def call
     @client.create_gist(gist_params)
+    @client.get_last_response
   end
 
   private
@@ -18,7 +19,8 @@ class GistQuestionService
         'test-guru-question.txt' => {
           content: gist_content
         }
-      }
+      },
+      public: true,
     }
   end
 

@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 
-users = User.create!([{ name: "User_name1", email: "email1@email.com" }, { name: "User_name2", email: "email2@email.com" }])
+users = User.all
 categories = Category.create!([{ title: "Category_name1" }, { title: "Category_name2" }])
 tests = Test.create!([{ title: "Title_name1", level: 1, author: users[1], category: categories[0] },
                       { title: "Title_name2", level: 0, author: users[1], category: categories[1] }])
