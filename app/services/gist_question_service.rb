@@ -6,7 +6,7 @@ class GistQuestionService
   end
 
   def call
-   @client.create_gist(gist_params)
+    @client.create_gist(gist_params)
   end
 
   private
