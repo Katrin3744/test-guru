@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_27_200602) do
+ActiveRecord::Schema.define(version: 2022_03_04_110535) do
 
   create_table "answers", force: :cascade do |t|
     t.string "body", null: false
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 2022_02_27_200602) do
     t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "gists", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.string "url", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_gists_on_question_id"
+    t.index ["user_id"], name: "index_gists_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -76,7 +86,7 @@ ActiveRecord::Schema.define(version: 2022_02_27_200602) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "type", default: "users", null: false
+    t.string "type", default: "User", null: false
     t.string "first_name"
     t.string "last_name"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
@@ -86,6 +96,8 @@ ActiveRecord::Schema.define(version: 2022_02_27_200602) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "gists", "questions"
+  add_foreign_key "gists", "users"
   add_foreign_key "questions", "tests"
   add_foreign_key "test_passages", "questions", column: "current_question_id"
   add_foreign_key "test_passages", "tests"

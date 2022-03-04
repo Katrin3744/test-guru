@@ -10,7 +10,7 @@ module ApplicationHelper
   def flash_message_helper
     html = ""
     flash.each do |key, msg|
-      html << (content_tag :p, msg, :id => key, :class => 'flash ' + key)
+      html << (content_tag :p, sanitize(msg,  { attributes: %w(target href)}), :id => key, :class => 'flash ' + key)
     end
     html.html_safe
   end

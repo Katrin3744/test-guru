@@ -1,6 +1,6 @@
 class TestPassagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_test_passage, only: [:show, :result, :update]
+  before_action :find_test_passage, only: [:show, :result, :update, :gist]
 
   def show
   end
@@ -17,6 +17,18 @@ class TestPassagesController < ApplicationController
     else
       render :show
     end
+  end
+
+  def gist
+    result = GistQuestionService.new(@test_passage.current_question).call
+    data = JSON.parse(result.env.body)
+    if result.success?
+      Gist.create(question_id: @test_passage.current_question.id, url: data["html_url"], user_id: current_user.id)
+      flash_options = { notice: t('.success') + " #{view_context.link_to 'TestGuru gist', data['html_url'], target: '_blank'}" }
+    else
+      flash_options = { alert: t('.failure') }
+    end
+    redirect_to @test_passage, flash_options
   end
 
   private
