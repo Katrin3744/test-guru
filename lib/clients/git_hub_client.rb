@@ -1,7 +1,6 @@
 require 'octokit'
 
 class GitHubClient
-  ROOT_ENDPOINT = 'https://api.github.com'
   ACCESS_TOKEN = Rails.application.credentials.github_api_key
 
   def initialize
