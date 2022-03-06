@@ -29,5 +29,3 @@ questions.each do |question|
   i += 1
 end
 answers = Answer.create!(answers_query)
-
-
