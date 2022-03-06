@@ -7,10 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 
-users = User.all
+users = User.last
+admin = Admin.last
 categories = Category.create!([{ title: "Category_name1" }, { title: "Category_name2" }])
-tests = Test.create!([{ title: "Title_name1", level: 1, author: users[1], category: categories[0] },
-                      { title: "Title_name2", level: 0, author: users[1], category: categories[1] }])
+tests = Test.create!([{ title: "Title_name1", level: 1, author: admin[0], category: categories[0] },
+                      { title: "Title_name2", level: 0, author: admin[0], category: categories[1] }])
 questions = Question.create!([{ body: "question_name11", test: tests[0] }, { body: "question_name12", test: tests[0] },
                               { body: "question_name13", test: tests[0] }, { body: "question_name14", test: tests[0] },
                               { body: "question_name21", test: tests[1] }, { body: "question_name22", test: tests[1] },
@@ -28,3 +29,5 @@ questions.each do |question|
   i += 1
 end
 answers = Answer.create!(answers_query)
+
+
