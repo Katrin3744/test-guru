@@ -7,6 +7,6 @@ class Gist < ApplicationRecord
   validates :url, presence: true
 
   def url_hash
-    self.url.split("/").last
+    url.split("/").last
   end
 end
