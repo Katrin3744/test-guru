@@ -234,7 +234,6 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise (~> 4.0)
-  faraday (~> 0.8)
   jbuilder (~> 2.7)
   letter_opener
   listen (~> 3.3)

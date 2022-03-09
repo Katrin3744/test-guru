@@ -1,5 +1,3 @@
-require 'octokit'
-
 class GitHubClient
   ACCESS_TOKEN = Rails.application.credentials.github_api_key
 

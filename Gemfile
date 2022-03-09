@@ -27,7 +27,6 @@ gem 'jbuilder', '~> 2.7'
 # AUTH
 gem 'devise', '~> 4.0 '
 # NETWORKING
-gem 'faraday', '~> 0.8'
 gem 'octokit', "4.21.0"
 
 # Reduces boot times through caching; required in config/boot.rb
