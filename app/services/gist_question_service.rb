@@ -1,4 +1,10 @@
 class GistQuestionService
+  Response = Struct.new(:url) do
+    def success?
+      !url.empty?
+    end
+  end
+
   def initialize(question, client: default_client)
     @question = question
     @test = @question.test
@@ -6,14 +12,8 @@ class GistQuestionService
   end
 
   def call
-    @client.create_gist(gist_params)
-    @response = @client.last_response
-    data = JSON.parse(@response.body)
-    data["html_url"]
-  end
-
-  def success?
-    @response.status == 201
+    result = @client.create_gist(gist_params)
+    Response.new result[:html_url]
   end
 
   private
