@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout }, controllers: {sessions: 'users/sessions'}
+  devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout }, controllers: { sessions: 'users/sessions' }
 
   root 'tests#index'
 
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   resources :test_passages, only: [:show, :update] do
     get :result, on: :member
+    resources :gists, shallow: true, only: [:create]
+    ##post :gist, on: :member
   end
 
   namespace :admin do
