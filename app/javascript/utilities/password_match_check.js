@@ -1,23 +1,30 @@
 document.addEventListener('turbolinks:load', function () {
-    let password_confirmation = document.getElementById('user_password_confirmation')
-    if (password_confirmation) {
-        password_confirmation.addEventListener('input', checkMatch)
+    const password_match_check = document.querySelector('.password-match-check')
+
+    if (password_match_check) {
+        const password_match = document.querySelectorAll('input[type="password"]')
+        const icon_not_match = document.querySelector('.octicon-x-circle-fill')
+        const icon_match = document.querySelector('.octicon-check-circle-fill')
+
+        function checkMatch() {
+            const icon_not_match_class_list = icon_not_match.classList
+            const icon_match_class_list = icon_match.classList
+
+            const password = password_match.item(0).value
+            const confirm_password = password_match.item(1).value
+
+            if (icon_not_match_class_list.contains('hide') && password !== confirm_password && confirm_password !== "") {
+                icon_not_match_class_list.remove('hide')
+                icon_match_class_list.add('hide')
+            } else if (password === confirm_password && confirm_password !== "") {
+                icon_not_match_class_list.add('hide')
+                icon_match_class_list.remove('hide')
+            } else if (confirm_password === "") {
+                icon_not_match_class_list.add('hide')
+                icon_match_class_list.add('hide')
+            }
+        }
+
+        password_match_check.addEventListener('input', checkMatch)
     }
 })
-
-function checkMatch() {
-    let confirm_password = document.getElementById('user_password_confirmation').value
-    let password = document.getElementById('user_password').value
-    console.log(document.querySelector('.octicon-x-circle-fill'))
-    if (document.querySelector('.octicon-x-circle-fill').classList.contains('hide') && password !== confirm_password
-        && confirm_password !== "") {
-        document.querySelector('.octicon-x-circle-fill').classList.remove('hide')
-        document.querySelector('.octicon-check-circle-fill').classList.add('hide')
-    } else if (password === confirm_password && confirm_password !== "") {
-        document.querySelector('.octicon-x-circle-fill').classList.add('hide')
-        document.querySelector('.octicon-check-circle-fill').classList.remove('hide')
-    } else if (confirm_password === "") {
-        document.querySelector('.octicon-x-circle-fill').classList.add('hide')
-        document.querySelector('.octicon-check-circle-fill').classList.add('hide')
-    }
-}
