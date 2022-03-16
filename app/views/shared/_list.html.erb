@@ -1,7 +1,11 @@
-<table>
+<table class="table">
   <tr>
     <% if resource.first.is_a?(Test) %>
-      <th>Title</th>
+      <th class="sort-by-title pointer">
+        Title
+        <%= octicon 'arrow-up', class: 'text-success hide' %>
+        <%= octicon 'arrow-down', class: 'text-success hide' %>
+      </th>
       <th>Level</th>
       <th>Questions number</th>
     <% else %>
