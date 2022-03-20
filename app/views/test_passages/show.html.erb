@@ -8,11 +8,11 @@
 </p>
 
 <%= content_tag :div,
-              'Progress',
-              class: 'test-passage-progress',
-              data: {number_current_question: @test_passage.current_question_number,
-                     number_of_questions: @test_passage.number_of_questions
-              } %>
+                'Progress',
+                class: 'test-passage-progress',
+                data: { number_current_question: @test_passage.current_question_number,
+                        number_of_questions: @test_passage.number_of_questions
+                } %>
 
 <%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |form| %>
   <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body,
@@ -25,5 +25,3 @@
   <p><%= link_to 'GistQuestion', test_passage_gists_path(@test_passage), method: :post %></p>
   <p><%= form.submit 'Next' %></p>
 <% end %>
-
-
