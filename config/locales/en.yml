@@ -36,3 +36,7 @@ en:
       success_creating_gist: "Successfully created %{href}"
       gist_href: "TestGuru gist"
       failure_creating_gist: "Something went wrong"
+  admin:
+    tests:
+      form_inline:
+        submit: "OK"

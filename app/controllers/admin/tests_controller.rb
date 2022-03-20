@@ -1,10 +1,9 @@
 class Admin::TestsController < Admin::BaseController
-  before_action :find_test, only: [:show, :edit, :update, :destroy]
+  before_action :find_tests_and_gists, only: [:index, :update_inline]
+  before_action :find_test, only: [:show, :edit, :update, :destroy, :update_inline]
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_record_not_found
 
   def index
-    @test = Test.all
-    @gist = Gist.all
   end
 
   def new
@@ -40,10 +39,23 @@ class Admin::TestsController < Admin::BaseController
     end
   end
 
+  def update_inline
+    if @test.update(test_params)
+      redirect_to admin_tests_path
+    else
+      render :index
+    end
+  end
+
   private
 
   def find_test
     @test = Test.find(params[:id])
+  end
+
+  def find_tests_and_gists
+    @gists = Gist.all
+    @tests = Test.all
   end
 
   def test_params
