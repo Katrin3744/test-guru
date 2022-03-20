@@ -12,7 +12,9 @@
   <%= render @test.questions %>
 </table>
 
-
+<p>
+  <%= link_to 'Edit', edit_admin_test_path(@test) %>
+</p>
 <p>
   <%= link_to "Back", admin_tests_path %>
 </p>
