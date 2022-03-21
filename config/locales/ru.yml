@@ -272,3 +272,7 @@ ru:
       success_creating_gist: "Создание прошло удачно %{href}"
       gist_href: "TestGuru gist"
       failure_creating_gist: "Создание прошло неудачно"
+  admin:
+    tests:
+      form_inline:
+        submit: "OK"
