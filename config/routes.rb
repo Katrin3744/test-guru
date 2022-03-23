@@ -8,8 +8,10 @@ Rails.application.routes.draw do
     resources :questions, shallow: true, except: [:index], only: :show do
       resources :answers, shallow: true, except: [:index], only: :show
     end
+
     post :start, on: :member
   end
+  resources :badges, only: [:show, :index]
 
   resources :test_passages, only: [:show, :update] do
     get :result, on: :member
@@ -18,9 +20,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :badges, shallow: true
     resources :tests do
       patch :update_inline, on: :member
-
       resources :questions, shallow: true, except: [:index] do
         resources :answers, shallow: true, except: [:index]
       end

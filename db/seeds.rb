@@ -29,3 +29,9 @@ questions.each do |question|
   i += 1
 end
 answers = Answer.create!(answers_query)
+
+Rule.create!([{ title: 'За успешное прохождение всех тестов категории', params_type: 'Category' },
+              { title: 'За успешное прохождение всех теста', params_type: 'Test' },
+              { title: 'За успешное прохождение тестов уровня', params_type: 'Test' },
+              { title: 'За успешное прохождение теста с первого раза', params_type: 'Test' },
+              { title: 'За успешное прохождение любого теста с первого раза' }])
