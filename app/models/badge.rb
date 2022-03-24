@@ -10,4 +10,8 @@ class Badge < ApplicationRecord
     class_of_param = rule.params_type.constantize
     class_of_param.find(params_id).title
   end
+
+  def user_have_badge?(current_user_id)
+    users_badges.where(user_id: current_user_id).count == 1 ? "yes" : "no"
+  end
 end

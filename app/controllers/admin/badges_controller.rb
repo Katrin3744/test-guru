@@ -1,8 +1,9 @@
 class Admin::BadgesController < ApplicationController
-  before_action :find_badges, only: [:index, :show]
-  before_action :find_badge, only: [:show, :destroy]
+  before_action :authenticate_user!
+  before_action :find_badge, only: [:show, :destroy, :update, :edit]
 
   def index
+    @badges = Badge.all
   end
 
   def show
@@ -13,11 +14,22 @@ class Admin::BadgesController < ApplicationController
   end
 
   def create
-    @badge= Badge.create!(badge_params)
+    @badge = Badge.create!(badge_params)
     if @badge.save
       redirect_to admin_badges_path
     else
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @badge.update(badge_params)
+      redirect_to admin_badge_path(@badge)
+    else
+      render :edit
     end
   end
 
@@ -30,10 +42,6 @@ class Admin::BadgesController < ApplicationController
 
   def badge_params
     params.require(:badge).permit(:title, :path_icon, :rule_id, :params_id)
-  end
-
-  def find_badges
-    @badges = Badge.all
   end
 
   def find_badge
