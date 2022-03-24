@@ -6,7 +6,7 @@ class TestPassagesController < ApplicationController
   end
 
   def result
-    @accessible_badges_id = UsersBadgesService.new(@test_passage).application_rules_badges
+    @accessible_badges_id = UsersBadgesService.new(@test_passage, current_user).application_rules_badges
     @accessible_badges_id.each {|badge_id| current_user.users_badges.build(badge_id: badge_id).save}
   end
 
