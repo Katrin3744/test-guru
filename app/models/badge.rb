@@ -4,11 +4,10 @@ class Badge < ApplicationRecord
   belongs_to :rule
 
   validates :title, presence: true
-  validates :path_icon, presence: true
+  validates :url_icon, presence: true, url: true
 
   def get_name_of_param
     class_of_param = rule.params_type.constantize
-    puts params_id.present?
     if params_id.present? and class_of_param.where(id: params_id).present?
       class_of_param.find(params_id).title
     else

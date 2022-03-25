@@ -1,7 +1,6 @@
 <tr>
-  <td>
-    <%= badge.title %>
-  </td>
+  <td><%= badge.title %></td>
+  <td><%= link_to 'Icon', badge.url_icon.html_safe, target: '_blank' %></td>
   <td><%= badge.rule.title %></td>
   <td><%= badge.rule.params_type %></td>
   <td><%= badge.get_name_of_param %></td>

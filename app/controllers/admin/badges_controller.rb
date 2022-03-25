@@ -14,7 +14,7 @@ class Admin::BadgesController < ApplicationController
   end
 
   def create
-    @badge = Badge.create!(badge_params)
+    @badge = Badge.new(badge_params)
     if @badge.save
       redirect_to admin_badges_path
     else
@@ -41,7 +41,7 @@ class Admin::BadgesController < ApplicationController
   private
 
   def badge_params
-    params.require(:badge).permit(:title, :path_icon, :rule_id, :params_id)
+    params.require(:badge).permit(:title, :url_icon, :rule_id, :params_id)
   end
 
   def find_badge

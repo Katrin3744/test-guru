@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_23_110458) do
+ActiveRecord::Schema.define(version: 2022_03_25_075307) do
 
   create_table "answers", force: :cascade do |t|
     t.string "body", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2022_03_23_110458) do
 
   create_table "badges", force: :cascade do |t|
     t.string "title", null: false
-    t.string "path_icon", null: false
+    t.string "url_icon", null: false
     t.integer "rule_id", null: false
     t.integer "params_id"
     t.datetime "created_at", precision: 6, null: false
