@@ -34,8 +34,7 @@ class TestPassage < ApplicationRecord
   end
 
   def timer_calculating
-    now_time = DateTime.current.to_time
-    now_time - created_at
+    DateTime.current.to_time - created_at
   end
 
   def time_for_test_passage

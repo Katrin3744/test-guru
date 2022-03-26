@@ -11,7 +11,7 @@
                 class: 'timer-progress',
                 data: { time_since_start: @test_passage.timer_calculating,
                         time_for_test: @test_passage.time_for_test_passage,
-                        link_to_result: result_test_passage_path(@test_passage)} %>
+                        link_to_result: result_test_passage_path(@test_passage) } %>
 <div class="test-progress-back-ground">
   <%= content_tag :div,
                   'Progress',

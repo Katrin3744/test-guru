@@ -20,10 +20,6 @@ class Test < ApplicationRecord
   end
 
   def get_timer
-    if timer.present?
-      timer
-    else
-      "unlimited"
-    end
+    timer || "unlimited"
   end
 end
