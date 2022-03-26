@@ -1,21 +1,17 @@
 class Badge < ApplicationRecord
+  belongs_to :rule
+
   has_many :users_badges, dependent: :delete_all
   has_many :users, through: :users_badges
-  belongs_to :rule
 
   validates :title, presence: true
   validates :url_icon, presence: true, url: true
 
   def get_name_of_param
-    class_of_param = rule.params_type.constantize
-    if params_id.present? and class_of_param.where(id: params_id).present?
-      class_of_param.find(params_id).title
-    else
-      params_id
-    end
+    rule.params_type.constantize&.find_by(id: params_id)&.title || params_id
   end
 
-  def user_have_badge?(current_user_id)
-    users_badges.where(user_id: current_user_id).count >= 1 ? "yes" : "no"
+  def user_badge_status(current_user_id)
+    users_badges.where(user_id: current_user_id).count >= 1 ? "achieved" : "not achieved"
   end
 end
