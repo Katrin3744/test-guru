@@ -33,6 +33,15 @@ class TestPassage < ApplicationRecord
     (correct_questions.to_d / test.questions.count.to_d) * 100
   end
 
+  def timer_calculating
+    now_time = DateTime.current.to_time
+    now_time - created_at
+  end
+
+  def time_for_test_passage
+    test.timer.present? ? test.timer * 60 : "unlimited time"
+  end
+
   private
 
   def before_validation_set_current_question
