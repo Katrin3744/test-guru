@@ -19,6 +19,7 @@ class TestPassage < ApplicationRecord
       self.correct_questions += 1
     end
     save!
+    current_question = nil if test.timer.present? && timer_calculating > time_for_test_passage
   end
 
   def number_of_questions
