@@ -59,7 +59,7 @@ class Admin::TestsController < Admin::BaseController
   end
 
   def test_params
-    params.require(:test).permit(:title, :body, :category_id, :author_id, :timer)
+    params.require(:test).permit(:title, :body, :category_id, :timer)
   end
 
   def rescue_with_record_not_found

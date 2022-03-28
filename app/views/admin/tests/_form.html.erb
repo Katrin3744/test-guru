@@ -20,12 +20,5 @@
     <%= form.number_field :timer, id: :test_timer %><br>
   </p>
 
-  <% if @test.author_id.present? %>
-    <p>
-      <%= form.label :author_id %><br>
-      <%= form.collection_select :author_id, User.all, :id, :email, prompt: true %><br>
-    </p>
-  <% end %>
-
   <p><%= form.submit %></p>
 <% end %>
