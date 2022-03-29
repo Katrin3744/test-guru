@@ -11,7 +11,12 @@ class TestPassage < ApplicationRecord
   end
 
   def successful?
-    result_calculation >= SUCCESS_RATIO
+    self.result >= SUCCESS_RATIO
+  end
+
+  def save_result
+    self.result = result_calculation
+    save!
   end
 
   def accept!(answer_ids)

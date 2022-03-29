@@ -12,11 +12,9 @@ class TestPassagesController < ApplicationController
     @test_passage.accept!(params[:answer_ids])
 
     if @test_passage.completed?
+      @test_passage.save_result
       TestsMailer.completed_test(@test_passage).deliver_now
-      badges = []
-      @accessible_badges_id = UsersBadgesService.new(@test_passage, current_user).application_rules_badges
-      @accessible_badges_id.map { |badge_id| badges.push({ badge_id: badge_id, user_id: current_user.id }) }
-      UsersBadge.create!(badges)
+      UsersBadgesService.new(@test_passage).call
       redirect_to result_test_passage_path(@test_passage)
     else
       render :show

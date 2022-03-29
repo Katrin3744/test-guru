@@ -2,8 +2,7 @@
   <td><%= badge.title %></td>
   <td><%= link_to 'Icon', badge.url_icon.html_safe, target: '_blank' %></td>
   <td><%= badge.rule.title %></td>
-  <td><%= badge.rule.params_type %></td>
-  <td><%= badge.get_name_of_param %></td>
+  <td><%= badge.get_name_of_param%></td>
   <td><%= link_to 'Show', admin_badge_path(badge) %></td>
   <td><%= link_to 'Edit',
                   edit_admin_badge_path(badge) %></td>

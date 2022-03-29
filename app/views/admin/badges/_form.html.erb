@@ -15,18 +15,18 @@
   </p>
 
   <p class="badge-field-test hide">
-    <%= form.label :params_id %><br>
-    <%= form.collection_select :params_id, Test.all, :id, :title, prompt: true %><br>
+    <%= form.label :rule_value %><br>
+    <%= form.collection_select :rule_value, Test.all, :id, :title, prompt: true %><br>
   </p>
 
   <p class="badge-field-category hide">
-    <%= form.label :params_id %><br>
-    <%= form.collection_select :params_id, Category.all, :id, :title, prompt: true%><br>
+    <%= form.label :rule_value %><br>
+    <%= form.collection_select :rule_value, Category.all, :id, :title, prompt: true%><br>
   </p>
 
   <p class="badge-field-level hide">
-    <%= form.label :params_id %><br>
-    <%= form.number_field :params_id, in: 0..100, step: 1, prompt: true %><br>
+    <%= form.label :rule_value %><br>
+    <%= form.number_field :rule_value, in: 0..100, step: 1, prompt: true %><br>
   </p>
   <p><%= form.submit %></p>
 <% end %>

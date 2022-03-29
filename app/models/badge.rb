@@ -8,7 +8,7 @@ class Badge < ApplicationRecord
   validates :url_icon, presence: true, url: true
 
   def get_name_of_param
-    rule.params_type.constantize&.find_by(id: params_id)&.title || params_id
+    rule.params_type.constantize&.find_by(id: rule_value)&.title || rule_value
   end
 
   def user_badge_status(current_user_id)

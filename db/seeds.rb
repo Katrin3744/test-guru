@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #
-
 users = User.last
 admin = Admin.last
 categories = Category.create!([{ title: "Category_name1" }, { title: "Category_name2" }])
@@ -30,8 +29,7 @@ questions.each do |question|
 end
 answers = Answer.create!(answers_query)
 
-Rule.create!([{ title: 'За успешное прохождение всех тестов категории', params_type: 'Category' },
-              { title: 'За успешное прохождение всех теста', params_type: 'Test' },
-              { title: 'За успешное прохождение тестов уровня', params_type: 'Test' },
-              { title: 'За успешное прохождение теста с первого раза', params_type: 'Test' },
-              { title: 'За успешное прохождение любого теста с первого раза' }])
+Rule.create!([{ title: 'За успешное прохождение всех тестов категории', type_of_award: 'all_category_tests_pass', params_type: 'Category' },
+              { title: 'За успешное прохождение любого теста с первого раза', type_of_award: 'all_tests_pass', params_type: 'Test' },
+              { title: 'За успешное прохождение тестов уровня', type_of_award: 'all_level_tests_pass', params_type: 'Test' },
+              { title: 'За успешное прохождение теста с первого раза', type_of_award: 'first_pass_test', params_type: 'Test' }])

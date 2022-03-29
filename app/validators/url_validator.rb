@@ -5,6 +5,5 @@ class UrlValidator < ActiveModel::EachValidator
 
   def url_valid?(url)
     url =~ URI::regexp
-    url.kind_of?(URI::HTTP) || url.kind_of?(URI::HTTPS)
   end
 end

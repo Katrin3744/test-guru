@@ -1,9 +1,0 @@
-<p>Title  <%= @badge.title %></p>
-<p>Icon <%= link_to 'Icon', @badge.url_icon.html_safe, target: '_blank' %></p>
-<p>Rule <%= @badge.rule.title %></p>
-<p>Rule attribute <%= @badge.rule.params_type %></p>
-<p>Name of attribute <%= @badge.get_name_of_param %></p>
-<p>In your collection <%= badge.user_have_badge?(current_user.id) %></p>
-<p>
-  <%= link_to "Back", badges_path %>
-</p>
