@@ -17,10 +17,10 @@ class TestPassage < ApplicationRecord
   def accept!(answer_ids)
     if test.timer.present? && timer_calculating > time_for_test_passage
       current_question = nil
-      puts "++++++++"
-    else if correct_answer?(answer_ids)
-      self.correct_questions += 1
-         end
+    else
+      if correct_answer?(answer_ids)
+        self.correct_questions += 1
+      end
     end
     save!
   end
