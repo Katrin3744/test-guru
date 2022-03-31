@@ -11,13 +11,14 @@ class TestPassage < ApplicationRecord
   end
 
   def successful?
-    result_calculation >= SUCCESS_RATIO
+    self.result >= SUCCESS_RATIO
   end
 
   def accept!(answer_ids)
     if correct_answer?(answer_ids)
       self.correct_questions += 1
     end
+    self.result = result_calculation
     save!
   end
 

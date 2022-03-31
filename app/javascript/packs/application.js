@@ -11,6 +11,7 @@ import "utilities/sorting"
 import "utilities/password_match_check"
 import "utilities/form_inline"
 import "utilities/progress_bar"
+import "utilities/adding_search_condition"
 
 Rails.start()
 Turbolinks.start()

@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_many :performed_tests, through: :test_passages, source: :test
   has_many :written_tests, foreign_key: "author_id", class_name: "Test", dependent: :destroy
   has_many :gists, dependent: :destroy
+  has_many :users_badges, dependent: :delete_all
+  has_many :badges, through: :users_badges
 
   validates :email, presence: true, format: URI::MailTo::EMAIL_REGEXP
 

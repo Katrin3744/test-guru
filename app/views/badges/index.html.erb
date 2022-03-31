@@ -1,0 +1,15 @@
+<h1>All badges</h1>
+<%= render 'shared/errors', resource: @badge %>
+
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Icon</th>
+    <th>Rule title</th>
+    <th>Rule attribute</th>
+    <th>In your collection</th>
+    <%= render @badges %>
+</table>
+<p>
+  <%= link_to "Back", tests_path %>
+</p>
