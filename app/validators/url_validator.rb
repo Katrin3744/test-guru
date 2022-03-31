@@ -4,6 +4,6 @@ class UrlValidator < ActiveModel::EachValidator
   end
 
   def url_valid?(url)
-    url =~ URI::regexp
+    url =~ URI::regexp(%w[http https])
   end
 end
