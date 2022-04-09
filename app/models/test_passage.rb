@@ -15,8 +15,12 @@ class TestPassage < ApplicationRecord
   end
 
   def accept!(answer_ids)
-    if correct_answer?(answer_ids)
-      self.correct_questions += 1
+    if test.timer.present? && timer_calculating > time_for_test_passage
+      current_question = nil
+    else
+      if correct_answer?(answer_ids)
+        self.correct_questions += 1
+      end
     end
     save!
   end
@@ -31,6 +35,14 @@ class TestPassage < ApplicationRecord
 
   def result_calculation
     (correct_questions.to_d / test.questions.count.to_d) * 100
+  end
+
+  def timer_calculating
+    DateTime.current.to_time - created_at
+  end
+
+  def time_for_test_passage
+    test.timer.present? ? test.timer * 60 : "unlimited time"
   end
 
   private

@@ -8,6 +8,7 @@ class Test < ApplicationRecord
 
   validates :level, numericality: { greater_than_or_equal_to: 0, only_integer: true }
   validates :title, presence: true, uniqueness: { scope: :level }
+  validates :timer, numericality: { greater_than_or_equal_to: 0, only_integer: true }
 
   scope :simple_level, -> { where(level: 0..1) }
   scope :average_level, -> { where(level: 2..4) }
@@ -16,5 +17,9 @@ class Test < ApplicationRecord
 
   def self.titles_tests_category_title(category_title)
     with_category_title(category_title).pluck(:title)
+  end
+
+  def get_timer
+    timer || "unlimited"
   end
 end
